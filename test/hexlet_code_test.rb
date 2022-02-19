@@ -15,7 +15,7 @@ class HexletCodeTest < Minitest::Test
     @form = File.read('./fixtures/form.html')
     @form_with_action = File.read('./fixtures/form_with_action.html')
     @form_with_fields = File.read('./fixtures/form_with_fields.html')
-    @form_with_error = 'error'
+    @form_with_submit = File.read('./fixtures/form_with_submit.html')
   end
 
   def test_tag_build
@@ -36,8 +36,14 @@ class HexletCodeTest < Minitest::Test
       f.input :name
       f.input :job, as: :text
     end
+    form_with_submit = HexletCode.form_for @user do |f|
+      f.input :name
+      f.input :job
+      f.submit
+    end
     assert_equal @form, form
     assert_equal @form_with_action, form_with_action
     assert_equal @form_with_fields, form_with_fields
+    assert_equal @form_with_submit, form_with_submit
   end
 end

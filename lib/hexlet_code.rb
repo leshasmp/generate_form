@@ -11,8 +11,13 @@ module HexletCode
       @tags << Tag.build('textarea', cols: 20, rows: 40, name: key) { value }
     else
       value = @user.public_send(key)
+      @tags << Tag.build('label', for: key) { key.capitalize }
       @tags << Tag.build('input', name: key, type: 'text', value: value)
     end
+  end
+
+  def self.submit(value = 'Save')
+    @tags << Tag.build('input', name: 'commit', type: 'submit', value: value)
   end
 
   def self.form_for(user, options = {})
