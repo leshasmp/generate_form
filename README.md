@@ -3,10 +3,6 @@
 [![Lint](https://github.com/leshasmp/rails-project-lvl1/actions/workflows/lint.yml/badge.svg)](https://github.com/leshasmp/rails-project-lvl1/actions/workflows/lint.yml)
 [![hexlet-check](https://github.com/leshasmp/rails-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/leshasmp/rails-project-lvl1/actions/workflows/hexlet-check.yml)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hexlet_code`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -25,7 +21,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "hexlet_code"
+
+HexletCode::Tag.build('img', src: 'path/to/image')
+# '<img src="path/to/image">'
+
+HexletCode::Tag.build('label', for: 'email') { 'Email' }
+# '<label for="email">Email</label>'
+
+User = Struct.new(:name, :job, :gender, keyword_init: true)
+user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+
+HexletCode.form_for user, url: '/users' do |f|
+end
+# '<form action="#" method="post"></form>'
+
+HexletCode.form_for user do |f|
+    f.input :name
+    f.input :job, as: :text
+end
+# '<form action="#" method="post">
+#   <input name="name" type="text" value="rob">
+#   <textarea cols="20" rows="40" name="job">hexlet</textarea>
+#  </form>'
+
+```
 
 ## Development
 
