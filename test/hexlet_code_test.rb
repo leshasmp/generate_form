@@ -3,7 +3,7 @@
 require "test_helper"
 
 class HexletCodeTest < Minitest::Test
-  User = Struct.new(:name, :job, :gender, keyword_init: true)
+  User = Struct.new(:name, :job, :gender, :class, keyword_init: true)
   def setup
     @br = '<br>'
     @img = '<img src="path/to/image">'
@@ -11,7 +11,7 @@ class HexletCodeTest < Minitest::Test
     @email = '<label>Email</label>'
     @label = '<label for="email">Email</label>'
     @div = '<div></div>'
-    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+    @user = User.new name: 'rob', job: 'hexlet', class: 'user-input', gender: 'm'
     @form = File.read('./fixtures/form.html')
     @form_with_action = File.read('./fixtures/form_with_action.html')
     @form_with_fields = File.read('./fixtures/form_with_fields.html')

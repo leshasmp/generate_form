@@ -10,10 +10,11 @@ module HexletCode
   autoload(:Input, 'hexlet_code/input_types/input.rb')
   def self.input(key, option = {})
     value = @user.public_send(key)
+    class_value = @user.public_send(:class)
     @form.tags << if option[:as] == :text
                     Textarea.build(key, value)
                   else
-                    Input.build(key, value)
+                    Input.build(key, value, class_value)
                   end
   end
 
