@@ -11,7 +11,7 @@ class HexletCodeTest < Minitest::Test
     @email = '<label>Email</label>'
     @label = '<label for="email">Email</label>'
     @div = '<div></div>'
-    @user = User.new name: 'rob', job: 'hexlet', class: 'user-input', gender: 'm'
+    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
     @form = File.read('./fixtures/form.html')
     @form_with_action = File.read('./fixtures/form_with_action.html')
     @form_with_fields = File.read('./fixtures/form_with_fields.html')
@@ -33,11 +33,11 @@ class HexletCodeTest < Minitest::Test
     form_with_action = HexletCode.form_for @user, url: '/users' do |f|
     end
     form_with_fields = HexletCode.form_for @user do |f|
-      f.input :name
+      f.input :name, class: 'user-input'
       f.input :job, as: :text
     end
     form_with_submit = HexletCode.form_for @user do |f|
-      f.input :name
+      f.input :name, class: 'user-input'
       f.input :job
       f.submit
     end
