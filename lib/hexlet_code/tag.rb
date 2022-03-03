@@ -1,3 +1,5 @@
+# frozen_string_literal: false
+
 module HexletCode
   # generate html tag
   class Tag

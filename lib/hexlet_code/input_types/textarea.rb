@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# generate textarea
 class Textarea
   def self.build(key, value, option = {})
     option.delete(:as)

@@ -1,3 +1,6 @@
+# frozen_string_literal: false
+
+# generate input
 class Input
   def self.build(key, value, option = {})
     label = HexletCode::Tag.build('label', for: key) { key.capitalize }
