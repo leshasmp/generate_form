@@ -11,7 +11,7 @@ module HexletCode
   def self.input(key, option = {})
     value = @user.public_send(key)
     @form.tags << if option[:as] == :text
-                    Textarea.build(key, value)
+                    Textarea.build(key, value, option)
                   else
                     Input.build(key, value, option)
                   end

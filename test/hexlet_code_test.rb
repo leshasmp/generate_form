@@ -34,7 +34,7 @@ class HexletCodeTest < Minitest::Test
     end
     form_with_fields = HexletCode.form_for @user do |f|
       f.input :name, class: 'user-input'
-      f.input :job, as: :text
+      f.input :job, as: :text, rows: 50, cols: 50
     end
     form_with_submit = HexletCode.form_for @user do |f|
       f.input :name, class: 'user-input'
