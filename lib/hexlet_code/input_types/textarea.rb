@@ -1,5 +1,4 @@
-module HexletCode::Textarea
-
+class Textarea
   def self.build(key, value, option = {})
     option.delete(:as)
     label = HexletCode::Tag.build('label', for: key) { key.capitalize }

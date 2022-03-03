@@ -1,5 +1,4 @@
-module HexletCode::Input
-
+class Input
   def self.build(key, value, option = {})
     label = HexletCode::Tag.build('label', for: key) { key.capitalize }
     input_options = { name: key, type: 'text', value: value }.merge option

@@ -1,5 +1,4 @@
 class Form
-
   attr_accessor :tags, :url
 
   def initialize

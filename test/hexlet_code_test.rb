@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class HexletCodeTest < Minitest::Test
-  User = Struct.new(:name, :job, :gender, :class, keyword_init: true)
+  User = Struct.new(:name, :job, :gender, keyword_init: true)
   def setup
     @br = '<br>'
     @img = '<img src="path/to/image">'
@@ -28,10 +28,8 @@ class HexletCodeTest < Minitest::Test
   end
 
   def test_form_for
-    form = HexletCode.form_for @user do |f|
-    end
-    form_with_action = HexletCode.form_for @user, url: '/users' do |f|
-    end
+    form = HexletCode.form_for @user
+    form_with_action = HexletCode.form_for @user, url: '/users'
     form_with_fields = HexletCode.form_for @user do |f|
       f.input :name, class: 'user-input'
       f.input :job, as: :text, rows: 50, cols: 50

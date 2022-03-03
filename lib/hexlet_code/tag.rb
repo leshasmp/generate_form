@@ -1,5 +1,4 @@
 module HexletCode::Tag
-
   def self.build(name, options = {})
     atributes = []
     tag_text = block_given? ? yield : ''
