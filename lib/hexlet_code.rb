@@ -3,8 +3,8 @@
 require_relative 'hexlet_code/version'
 require 'hexlet_code/form'
 
+# module hexletcode
 module HexletCode
-
   autoload(:Tag, 'hexlet_code/tag.rb')
   autoload(:Textarea, 'hexlet_code/input_types/textarea.rb')
   autoload(:Input, 'hexlet_code/input_types/input.rb')
