@@ -23,29 +23,41 @@ Or install it yourself as:
 
 ```ruby
 require "hexlet_code"
-
+```
+```ruby
 HexletCode::Tag.build('img', src: 'path/to/image')
-# '<img src="path/to/image">'
-
+```
+```txt
+<img src="path/to/image">
+```
+```ruby
 HexletCode::Tag.build('label', for: 'email') { 'Email' }
-# '<label for="email">Email</label>'
-
+```
+```txt
+<label for="email">Email</label>
+```
+```ruby
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 user = User.new name: 'rob', job: 'hexlet', gender: 'm'
-
-HexletCode.form_for user, url: '/users' do |f|
+HexletCode.form_for user, url: '/users'
+```
+```txt
+<form action="#" method="post"></form>
+```
+```ruby
+HexletCode.form_for @user do |f|
+    f.input :name, class: 'user-input'
+    f.input :job, as: :text, rows: 50, cols: 50
 end
-# '<form action="#" method="post"></form>'
-
-HexletCode.form_for user do |f|
-    f.input :name
-    f.input :job, as: :text
-end
-# '<form action="#" method="post">
-#   <input name="name" type="text" value="rob">
-#   <textarea cols="20" rows="40" name="job">hexlet</textarea>
-#  </form>'
-
+```
+```txt
+<form action="#" method="post">
+    <label for="name">Name</label>
+    <input name="name" type="text" value="rob" class="user-input">
+    <label for="job">Job</label>
+    <input name="job" type="text" value="hexlet">
+    <input name="commit" type="submit" value="Save">
+</form>
 ```
 
 ## Development
