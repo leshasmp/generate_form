@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = 'generate_form'
   spec.description = 'generate_form'
   spec.homepage = 'https://github.com/leshasmp/rails-project-lvl1'
-  spec.required_ruby_version = '2.5.0'
+  spec.required_ruby_version = '>= 2.5.0'
 
   spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
   spec.metadata = {
