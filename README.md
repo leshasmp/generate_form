@@ -48,6 +48,7 @@ HexletCode.form_for user, url: '/users'
 HexletCode.form_for @user do |f|
     f.input :name, class: 'user-input'
     f.input :job, as: :text, rows: 50, cols: 50
+    f.submit
 end
 ```
 ```txt
@@ -55,7 +56,7 @@ end
     <label for="name">Name</label>
     <input name="name" type="text" value="rob" class="user-input">
     <label for="job">Job</label>
-    <input name="job" type="text" value="hexlet">
+    <textarea cols="50" rows="50" name="job">hexlet</textarea>
     <input name="commit" type="submit" value="Save">
 </form>
 ```
