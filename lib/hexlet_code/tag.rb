@@ -7,10 +7,8 @@ module HexletCode
       atributes = []
       tag_text = block_given? ? yield : ''
       single_tags = %w[br img input]
-      unless options.empty?
-        options.each do |atribute, value|
-          atributes << " #{atribute}=\"#{value}\""
-        end
+      options.each do |atribute, value|
+        atributes << " #{atribute}=\"#{value}\""
       end
       if single_tags.include? name
         "<#{name}#{atributes.join}>"
