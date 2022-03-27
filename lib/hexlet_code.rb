@@ -2,6 +2,7 @@
 
 require_relative 'hexlet_code/version'
 require 'hexlet_code/form'
+require 'active_support'
 
 # module hexletcode
 module HexletCode
@@ -10,11 +11,12 @@ module HexletCode
   autoload(:Input, 'hexlet_code/input_types/input.rb')
   def self.input(key, option = {})
     value = @user.public_send(key)
-    @form.tags << if option[:as] == :text
-                    Textarea.build(key, value, option)
-                  else
-                    Input.build(key, value, option)
-                  end
+    input = {}
+    input[:type] = option[:as].nil? ? 'base' : option[:as]
+    klass_name = "HexletCode::Inputs::#{input[:type].capitalize}Input"
+    klass = klass_name.constantize
+    input = klass.new(key, value, option)
+    @form.tags << input.render
   end
 
   def self.submit(value = 'Save')
