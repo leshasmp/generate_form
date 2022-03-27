@@ -3,12 +3,12 @@
 require_relative 'hexlet_code/version'
 require 'hexlet_code/form'
 require 'active_support'
+require 'active_support/core_ext'
 
 # module hexletcode
 module HexletCode
   autoload(:Tag, 'hexlet_code/tag.rb')
-  autoload(:Textarea, 'hexlet_code/input_types/textarea.rb')
-  autoload(:Input, 'hexlet_code/input_types/input.rb')
+  autoload(:Inputs, 'hexlet_code/inputs.rb')
   def self.input(key, option = {})
     value = @user.public_send(key)
     input = {}
