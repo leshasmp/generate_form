@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'hexlet_code/version'
-require 'hexlet_code/form'
 require 'active_support'
 require 'active_support/core_ext'
 
@@ -9,6 +8,7 @@ require 'active_support/core_ext'
 module HexletCode
   autoload(:Tag, 'hexlet_code/tag.rb')
   autoload(:Inputs, 'hexlet_code/inputs.rb')
+  autoload(:Form, 'hexlet_code/form.rb')
   def self.input(key, option = {})
     value = @user.public_send(key)
     input = {}
@@ -16,18 +16,19 @@ module HexletCode
     klass_name = "HexletCode::Inputs::#{input[:type].capitalize}Input"
     klass = klass_name.constantize
     input = klass.new(key, value, option)
-    @form.tags << input.render
+    @tags << input
   end
 
   def self.submit(value = 'Save')
-    @form.tags << Tag.build('input', name: 'commit', type: 'submit', value: value)
+    @submit_value = value
   end
 
   def self.form_for(user, options = {})
     @user = user
-    @form = Form.new
-    @form.url = options.key?(:url) ? options[:url] : '#'
+    @tags = []
+    @url = options.key?(:url) ? options[:url] : '#'
+    @submit_value = ''
     yield self if block_given?
-    Tag.build('form', action: @form.url, method: 'post') { @form.tags.join }
+    HexletCode::Form.build @tags, @url, @submit_value
   end
 end
